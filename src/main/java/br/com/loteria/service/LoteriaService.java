@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.loteria.model.Jogador;
+import br.com.loteria.repository.ApostaRepository;
 import br.com.loteria.repository.JogadorRepository;
 
 
@@ -16,17 +17,48 @@ public class LoteriaService {
 
 	@Autowired
 	private JogadorRepository jogadorRepository;
+	
+	@Autowired
+	private ApostaRepository apostaRepository;
 		
 	
 	public Jogador save(Jogador jogador) {
 		
-		List<Jogador> list = jogadorRepository.findByEmail(jogador.getEmail());
+		Jogador j = jogadorRepository.findByEmail(jogador.getEmail());
 										
-		if(list.size() > 0) jogador = list.get(0).addAposta();
+		if(j != null) jogador = j.addAposta();
 		
 		return jogadorRepository.save(jogador);
 	}
 	
 	
+	public List<Jogador> buscarJogadores() {
+		
+		return jogadorRepository.findAll();
+	}
+		
+	public Jogador buscarJogadorPorId(Long id) {
+		
+		return jogadorRepository
+				.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException());
+	}
+		
+	public Jogador buscarJogadorPorEmail(String email) {
+		
+		return jogadorRepository.findByEmail(email.toLowerCase());				
+	}
+	
+	public void deleteJogadorPorId(Long id) {
+		jogadorRepository.deleteById(id);
+	}
+	
+	public void deleteJogadorPorEmail(String email) {
+		jogadorRepository.deleteByEmail(email.toLowerCase());
+	}
+	
+	public void deleteAposta(Long id) {
+		apostaRepository.deleteById(id);
+	}
 	
 }

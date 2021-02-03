@@ -1,5 +1,7 @@
 package br.com.loteria.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,44 @@ public class LoteriaController {
 	private LoteriaService service;
 	
 	
+	@GetMapping(value = "{id}")
+	public Jogador buscarJogadorPorId(@PathVariable Long id) {
+		return service.buscarJogadorPorId(id);		
+	}
+	
+	@GetMapping(value = "email/{email}")
+	public Jogador buscarJogadorPorEmail(@PathVariable String email) {
+		return service.buscarJogadorPorEmail(email);		
+	}
+	
+	@GetMapping
+	public List<Jogador> buscarJogadores() {
+		return service.buscarJogadores();
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Jogador save(@RequestBody @Valid Jogador jogador) {
 		return service.save(jogador);
 	}
 	
+	@DeleteMapping(value = "{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteJogadorPorId(@PathVariable Long id) {
+		service.deleteJogadorPorId(id);
+	}
+	
+	@DeleteMapping(value = "email/{email}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteJogadorPorEmail(@PathVariable String email) {
+		service.deleteJogadorPorEmail(email);
+	}
+	
+	@DeleteMapping(value = "aposta/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteAposta(@PathVariable Long id) {
+		service.deleteAposta(id);
+	}
 	
 }
 

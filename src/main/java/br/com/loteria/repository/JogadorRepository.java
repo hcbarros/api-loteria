@@ -8,5 +8,7 @@ import br.com.loteria.model.Jogador;
 
 public interface JogadorRepository extends JpaRepository<Jogador, Long> {
 	
-	List<Jogador> findByEmail(String email);
+	Jogador findByEmail(String email);
+	
+	void deleteByEmail(String email);
 }
