@@ -73,9 +73,7 @@ public class Jogador {
 			List<Integer> numbers = aposta.getNumeros_sorteados();
 						
 			for(Aposta ap: apostas) {				
-				for(int i = 0; i < ap.getNumeros_sorteados().size(); i++) {
-					if(ap.getNumeros_sorteados().get(i) != numbers.get(i)) repete = false;
-				}
+				if(!ap.getNumeros_sorteados().equals(numbers)) repete = false;				
 			}
 			if(!repete) apostas.add(aposta);
 		}

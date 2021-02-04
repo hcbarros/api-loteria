@@ -49,12 +49,8 @@ public class LoteriaService {
 		return jogadorRepository.findByEmail(email.toLowerCase());				
 	}
 	
-	public void deleteJogadorPorId(Long id) {
+	public void deleteJogador(Long id) {
 		jogadorRepository.deleteById(id);
-	}
-	
-	public void deleteJogadorPorEmail(String email) {
-		jogadorRepository.deleteByEmail(email.toLowerCase());
 	}
 	
 	public void deleteAposta(Long id) {

@@ -28,12 +28,10 @@ public class DataLoader {
 						
 			Jogador j1 = new Jogador("jogador1@gmail.com");
 			j1.addAposta();
-			j1.addAposta();
 			
 			Jogador j2 = new Jogador("jogador2@gmail.com");
 			j2.addAposta();
-			j2.addAposta();
-			
+						
 			List<Jogador> list = Arrays.asList(j1,j2);
 			
 			repository.saveAll(list);					

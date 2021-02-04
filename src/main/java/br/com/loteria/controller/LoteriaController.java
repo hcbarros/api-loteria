@@ -54,13 +54,7 @@ public class LoteriaController {
 	@DeleteMapping(value = "{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteJogadorPorId(@PathVariable Long id) {
-		service.deleteJogadorPorId(id);
-	}
-	
-	@DeleteMapping(value = "email/{email}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteJogadorPorEmail(@PathVariable String email) {
-		service.deleteJogadorPorEmail(email);
+		service.deleteJogador(id);
 	}
 	
 	@DeleteMapping(value = "aposta/{id}")
