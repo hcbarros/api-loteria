@@ -47,8 +47,4 @@ public class Aposta {
 		return numeros;
 	}
 	
-	public void setNumeros(List<Integer> numeros) {
-		this.numeros= numeros;
-	}	
-	
 }

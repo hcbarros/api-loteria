@@ -10,9 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -90,12 +87,20 @@ class GameStoreApplicationTests {
 	@Order(6)
     public void deveBuscarJogadorPorId() {
 				
-		Jogador jog = getJogador(1);		
+		Jogador jog = getJogador("1");		
 		assertEquals(jog.getEmail(), "jogador1@gmail.com");
 	}
 	
 	@Test
 	@Order(7)
+    public void deveBuscarJogadorPorEmail() {
+				
+		Jogador jog = getJogador("/email/jogador1@gmail.com");		
+		assertEquals(jog.getId(), 1L);
+	}
+	
+	@Test
+	@Order(8)
     public void deveDeletarJogadorPorId() {
 			
 		List<Jogador> list1 = getJogadores();
@@ -109,28 +114,21 @@ class GameStoreApplicationTests {
 	}
 
 	@Test
-	@Order(8)
+	@Order(9)
     public void deveDeletarAposta() {
 			
-		Jogador j1 = getJogador(1);
+		Jogador j1 = getJogador("1");
 		List<Aposta> inicialSizeList = j1.getApostas();
 		
 		this.restTemplate
 			.delete("http://localhost:" + port + "/loteria/aposta/2");
 		
-		Jogador j2 = getJogador(1);
+		Jogador j2 = getJogador("1");
 		int finalSizeList = j2.getApostas().size();
 		
 		assertNotEquals(inicialSizeList, finalSizeList);
 	}
-		
-	
-	private Aposta getAposta(int n) {
-		
-		return this.restTemplate
-				.getForEntity("http://localhost:" + port + "/loteria/"+n, Aposta.class)
-				.getBody();		 
-	}
+
 	
 	private List<Jogador> getJogadores() {
 
@@ -139,10 +137,10 @@ class GameStoreApplicationTests {
 				.getBody();		 
 	}
 	
-	private Jogador getJogador(int id) {
+	private Jogador getJogador(String text) {
 		
 		return this.restTemplate
-				.getForEntity("http://localhost:" + port + "/loteria/"+id, Jogador.class)
+				.getForEntity("http://localhost:" + port + "/loteria/"+text, Jogador.class)
 				.getBody();		 
 	}
 	
