@@ -19,10 +19,10 @@ API criada com Spring boot, enviando por POST:
      email: 'umEmailQualquer@email.com'\
 } 
 
-e retornando como resultado o email informado com uma sequencia de 6 numeros aleatorios de 1 a 60, representando o sorteio de numeros para uma loteria.
+e retornando como resultado o email informado com uma sequência de 6 números aleatórios de 1 a 60, representando o sorteio de números para uma loteria.
 
-Se passar o mesmo email por POST, caixa alta ou baixa, retornara mais outra sequencia, exibindo as duas apostas realizadas em uma lista.
+Se passar o mesmo email por POST, caixa alta ou baixa, retornará mais outra sequência, exibindo as duas apostas realizadas em uma lista.
 
-A cada email informado havera uma lista inicial com apenas um sorteio.
+A cada email informado haverá uma lista inicial com apenas um sorteio.
 
-Um sorteio jamais tera numeros repetidos (o construtor da classe "Aposta" garante isso) e um mesmo jogador jamais tera duas sequencias identicas (o metodo addAposta chamado na classe de servico garante isso). Tambem jamais havera dois jogadores com o mesmo email.
+Um sorteio jamais terá números repetidos (o construtor da classe "Aposta" garante isso) e um mesmo jogador jamais terá duas sequências idênticas (o método addAposta chamado na classe de serviço garante isso). Também jamais haverá dois jogadores com o mesmo email.
