@@ -63,21 +63,20 @@ public class Jogador {
 	public void setApostas(List<Aposta> lista) {
 		this.apostas = apostas;
 	}
-	
 
+	
 	public Jogador addAposta() {
 		
 		boolean repete = true;
-		while(repete) {
-			Aposta aposta = new Aposta();
-			List<Integer> numbers = aposta.getNumeros_sorteados();
+		Aposta aposta = new Aposta();
+		List<Integer> numbers = aposta.getNumeros_sorteados();
 						
-			for(Aposta ap: apostas) {				
-				if(!ap.getNumeros_sorteados().equals(numbers)) repete = false;				
-			}
-			if(!repete) apostas.add(aposta);
+		for(Aposta ap: apostas) {				
+			if(!ap.getNumeros_sorteados().equals(numbers)) repete = false;				
 		}
-		return this;
+		if(!repete) apostas.add(aposta);
+		
+		return repete ? addAposta() : this;
 	}
 	
 }
