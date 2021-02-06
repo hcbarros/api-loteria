@@ -3,11 +3,11 @@
 
 Endpoint base -> http://localhost:8080/loteria
 
-POST/
-GET/
-GET/{id}
-GET/email/{email}
-DELETE/{id}
+POST/\
+GET/\
+GET/{id}\
+GET/email/{email}\
+DELETE/{id}\
 DELETE/aposta/{id}
 
 URL: () -> https://api-loteria-zup.herokuapp.com/loteria/
@@ -15,8 +15,8 @@ URL: () -> https://api-loteria-zup.herokuapp.com/loteria/
 
 API criada com Spring boot, enviando por POST: 
 
-{ 
-  email:"umEmailQualquer@email.com" 
+{ \
+  email:"umEmailQualquer@email.com"\ 
 } 
 
 e retornando como resultado o email informado com uma sequencia de 6 numeros aleatorios de 1 a 60, representando o sorteio de numeros para uma loteria.
